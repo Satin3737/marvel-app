@@ -3,6 +3,7 @@ import Header from "./Header";
 import Banner from "./Banner";
 import CharRandom from "./CharRandom";
 import CharList from "./CharList";
+import Skeleton from "./Skeleton";
 
 const Home = () => {
     return (
@@ -13,6 +14,9 @@ const Home = () => {
             <div className="container">
                 <div className="home__wrapper">
                     <CharList/>
+                    <aside className="sidebar">
+                        <Skeleton/>
+                    </aside>
                 </div>
             </div>
         </main>
