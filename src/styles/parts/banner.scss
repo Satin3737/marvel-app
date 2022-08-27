@@ -1,0 +1,17 @@
+.banner {
+    margin-bottom: 50px;
+    &__wrapper {
+        padding: 18px 0;
+        background:
+                url("../../resources/images/banner_avengers.png") no-repeat left 45px center / contain,
+                url("../../resources/images/banner_logo.png") no-repeat right 25px center / contain,
+                $c-bg;
+    }
+    &__title {
+        font-size: 24px;
+        font-weight: 700;
+        color: $c-white;
+        max-width: 240px;
+        margin-left: 280px;
+    }
+}

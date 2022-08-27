@@ -1,0 +1,36 @@
+.header {
+    padding: 50px 0;
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+    &__title {
+        font-size: 28px;
+        font-weight: 700;
+        span {
+            font-weight: inherit;
+            color: $c-red;
+            font-size: inherit;
+        }
+    }
+    &__nav {
+        display: flex;
+        align-items: center;
+        font-weight: 700;
+        font-size: 24px;
+        span {
+            display: inline-block;
+            padding: 0 8px;
+            font-size: inherit;
+            font-weight: inherit;
+        }
+    }
+    &__link {
+        font-size: inherit;
+        font-weight: inherit;
+        &_current {
+            color: $c-red;
+        }
+    }
+}

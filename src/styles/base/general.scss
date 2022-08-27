@@ -1,4 +1,4 @@
-* {
+body {
     font-family: 'Roboto Condensed', sans-serif;
     font-size: 14px;
     line-height: 1.4;
@@ -7,7 +7,63 @@
 }
 
 .container {
+    width: 100%;
     max-width: 1180px;
     margin: 0 auto;
-    padding: 40px;
+    padding: 0 40px;
+}
+
+.title {
+    font-weight: 700;
+    font-size: 22px;
+    text-transform: uppercase;
+}
+
+.button {
+    width: fit-content;
+    min-width: 100px;
+    padding: 11px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: $c-white;
+    text-transform: uppercase;
+    background: $c-red;
+    border: none;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+    &:before, &:after {
+        content: '';
+        width: 16px;
+        height: 16px;
+        background: $c-white;
+        position: absolute;
+        transform: rotate(45deg);
+        transition: all 0.4s;
+    }
+    &:before {
+        left: -8px;
+        top: -8px;
+    }
+    &:after {
+        right: -8px;
+        bottom: -8px;
+    }
+    &_grey {
+        background: $c-grey;
+    }
+    &_wide {
+        min-width: 170px;
+    }
+    &:hover, &:focus {
+        &:before {
+            left: -16px;
+            top: -16px;
+        }
+        &:after {
+            right: -16px;
+            bottom: -16px;
+        }
+    }
 }
