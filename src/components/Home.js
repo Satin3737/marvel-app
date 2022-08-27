@@ -4,6 +4,7 @@ import Banner from "./Banner";
 import CharRandom from "./CharRandom";
 import CharList from "./CharList";
 import Skeleton from "./Skeleton";
+import CharInfo from "./CharInfo";
 
 const Home = () => {
     return (
@@ -13,9 +14,12 @@ const Home = () => {
             <CharRandom/>
             <div className="container">
                 <div className="home__wrapper">
-                    <CharList/>
-                    <aside className="sidebar">
+                    <div className="home__content">
+                        <CharList/>
+                    </div>
+                    <aside className="home__sidebar">
                         <Skeleton/>
+                        <CharInfo/>
                     </aside>
                 </div>
             </div>
