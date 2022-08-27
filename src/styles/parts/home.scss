@@ -1,4 +1,9 @@
 .home {
     min-height: 100vh;
+    padding: 50px 0;
     background: url("../../resources/images/home_bg.png") no-repeat right bottom / 470px;
+    &__wrapper {
+        display: flex;
+        align-items: flex-start;
+    }
 }
