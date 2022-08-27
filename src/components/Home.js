@@ -6,6 +6,7 @@ import CharList from "./CharList";
 import Skeleton from "./Skeleton";
 import CharInfo from "./CharInfo";
 import CharForm from "./CharForm";
+import CharSingle from "./CharSingle";
 
 const Home = () => {
     return (
@@ -25,6 +26,7 @@ const Home = () => {
                     </aside>
                 </div>
             </div>
+            <CharSingle/>
         </main>
     )
 }
