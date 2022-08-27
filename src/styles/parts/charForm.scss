@@ -1,0 +1,32 @@
+.form {
+    width: 100%;
+    box-shadow: 0 5px 20px $c-shadow;
+    padding: 25px;
+    margin-bottom: 30px;
+    background: $c-white;
+    &__title {
+        font-size: 18px;
+        font-weight: 700;
+        margin-bottom: 15px;
+    }
+    &__wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    &__input {
+        flex: 1 1 auto;
+        padding: 10px;
+        background: $c-white;
+        box-shadow: 0 4px 4px $c-shadow;
+        border: none;
+        margin-right: 25px;
+        outline: none;
+        &:focus {
+            box-shadow: 0 0 10px $c-red;
+        }
+        &::placeholder {
+            opacity: 0.5;
+        }
+    }
+}

@@ -5,6 +5,7 @@ import CharRandom from "./CharRandom";
 import CharList from "./CharList";
 import Skeleton from "./Skeleton";
 import CharInfo from "./CharInfo";
+import CharForm from "./CharForm";
 
 const Home = () => {
     return (
@@ -20,6 +21,7 @@ const Home = () => {
                     <aside className="home__sidebar">
                         <Skeleton/>
                         <CharInfo/>
+                        <CharForm/>
                     </aside>
                 </div>
             </div>
