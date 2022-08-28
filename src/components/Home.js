@@ -8,6 +8,7 @@ import CharInfo from "./CharInfo";
 import CharForm from "./CharForm";
 import CharSingle from "./CharSingle";
 import ComicsSingle from "./ComicsSingle";
+import ComicsList from "./ComicsList";
 
 const Home = () => {
     return (
@@ -27,6 +28,7 @@ const Home = () => {
                     </aside>
                 </div>
             </div>
+            <ComicsList/>
             <CharSingle/>
             <ComicsSingle/>
         </main>
