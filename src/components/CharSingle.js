@@ -1,3 +1,5 @@
+import '../styles/general.scss'
+import '../styles/parts/charSingle.scss'
 import loki from '../resources/images/char_loki.jpg'
 
 const CharSingle = () => {

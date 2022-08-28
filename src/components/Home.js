@@ -1,4 +1,5 @@
-import '../styles/app.scss'
+import '../styles/general.scss'
+import '../styles/parts/home.scss'
 import Header from "./Header";
 import Banner from "./Banner";
 import CharRandom from "./CharRandom";

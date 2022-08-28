@@ -1,3 +1,6 @@
+import '../styles/general.scss'
+import '../styles/parts/banner.scss'
+
 const Banner = () => {
     return (
         <section className="banner">

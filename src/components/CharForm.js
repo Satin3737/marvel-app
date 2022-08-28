@@ -1,3 +1,6 @@
+import '../styles/general.scss'
+import '../styles/parts/charForm.scss'
+
 const CharForm = () => {
     return (
         <form action="#" className="form">

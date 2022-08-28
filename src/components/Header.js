@@ -1,3 +1,6 @@
+import '../styles/general.scss'
+import '../styles/parts/header.scss'
+
 const Header = () => {
     return (
         <header className="header">

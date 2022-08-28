@@ -1,3 +1,6 @@
+import '../styles/general.scss'
+import '../styles/parts/skeleton.scss'
+
 const Skeleton = () => {
     return (
         <section className="skeleton">

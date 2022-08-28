@@ -1,3 +1,5 @@
+import '../styles/general.scss'
+import '../styles/parts/comicsList.scss'
 import comics from '../resources/images/comics.jpg';
 
 const ComicsList = () => {

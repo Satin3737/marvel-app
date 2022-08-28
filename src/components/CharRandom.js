@@ -1,3 +1,5 @@
+import '../styles/general.scss'
+import '../styles/parts/charRandom.scss'
 import char from '../resources/images/random_thor.jpg';
 
 const CharRandom = () => {

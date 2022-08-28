@@ -1,3 +1,5 @@
+import '../styles/general.scss'
+import '../styles/parts/charList.scss'
 import abyss from '../resources/images/char_abyss.jpg'
 import adam from '../resources/images/char_adam.jpg'
 import calypso from '../resources/images/char_calypso.jpg'
