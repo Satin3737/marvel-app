@@ -7,6 +7,7 @@ import Skeleton from "./Skeleton";
 import CharInfo from "./CharInfo";
 import CharForm from "./CharForm";
 import CharSingle from "./CharSingle";
+import ComicsSingle from "./ComicsSingle";
 
 const Home = () => {
     return (
@@ -27,6 +28,7 @@ const Home = () => {
                 </div>
             </div>
             <CharSingle/>
+            <ComicsSingle/>
         </main>
     )
 }

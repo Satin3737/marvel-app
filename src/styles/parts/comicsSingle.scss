@@ -1,0 +1,47 @@
+.comics {
+    margin-bottom: 50px;
+    &__wrapper {
+        display: flex;
+        align-items: flex-start;
+    }
+    &__img {
+        flex: 0 1 300px;
+        margin-right: 50px;
+        img {
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+    &__info {
+        flex: 1 1 auto;
+    }
+    &__titles {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 25px;
+    }
+    &__title {
+        font-size: 22px;
+        font-weight: 700;
+        margin-right: 10px;
+    }
+    &__back {
+        font-size: 18px;
+        font-weight: 700;
+        transition: all 0.4s;
+        &:hover, &:focus {
+            color: $c-red;
+        }
+    }
+    &__descr, &__pages, &__lang {
+        max-width: 550px;
+        font-size: 18px;
+        margin-bottom: 25px;
+    }
+    &__price {
+        font-size: 24px;
+        color: $c-red;
+        font-weight: 700;
+    }
+}
