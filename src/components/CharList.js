@@ -44,7 +44,6 @@ class CharList extends Component {
         const errorMessage = error ? <ErrorMessage/> : null;
         const spinner = loading ? <Spinner/> : null;
         const content = !(loading || error) ? char.map(obj => <Character key={obj.id} character={obj}/>) : null;
-        console.log(char);
 
         return (
             <section className="characters">
@@ -65,7 +64,7 @@ const Character = ({character}) => {
         <li className="characters__item">
             <a href="#" className="characters__link">
                 <div className="characters__img">
-                    <img style={noThumbnail ? {objectFit: 'contain'} : null} src={thumbnail} alt="character"/>
+                    <img style={noThumbnail ? {objectFit: 'contain'} : null} src={thumbnail} alt={name}/>
                 </div>
                 <div className="characters__name title">
                     {name}

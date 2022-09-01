@@ -89,7 +89,7 @@ const Char = ({char}) => {
     return (
         <div className="random__item random__item_char">
             <div className="random__img">
-                <img style={noThumbnail ? {objectFit: 'contain'} : null} src={thumbnail} alt="random character"/>
+                <img style={noThumbnail ? {objectFit: 'contain'} : null} src={thumbnail} alt={name}/>
             </div>
             <div className="random__info">
                 <div>
