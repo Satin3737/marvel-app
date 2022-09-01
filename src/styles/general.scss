@@ -37,6 +37,7 @@ body {
     outline: none;
     position: relative;
     overflow: hidden;
+    cursor: pointer;
     &:before, &:after {
         content: '';
         width: 16px;

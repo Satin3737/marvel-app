@@ -6,11 +6,6 @@ import Spinner from "./Spinner";
 import ErrorMessage from "./ErrorMessage";
 
 class CharRandom extends Component {
-    constructor(props) {
-        super(props);
-        this.updateChar();
-    }
-
     state = {
         char: {},
         loading: true,
@@ -40,6 +35,17 @@ class CharRandom extends Component {
             .catch(this.onError);
     }
 
+    tryRandomChar = () => {
+        this.setState({
+            loading: true
+        });
+        this.updateChar();
+    }
+
+    componentDidMount() {
+        this.updateChar();
+    }
+
     render() {
         const {char, loading, error} = this.state;
 
@@ -65,9 +71,9 @@ class CharRandom extends Component {
                                 <div className="random__another">
                                     Or choose another one
                                 </div>
-                                <a href="#" className="random__button random__button_try button">
+                                <button onClick={this.tryRandomChar} className="random__button random__button_try button">
                                     Try it
-                                </a>
+                                </button>
                             </div>
                         </div>
                     </div>
@@ -78,12 +84,12 @@ class CharRandom extends Component {
 }
 
 const Char = ({char}) => {
-    const {name, description, thumbnail, homepage, wiki} = char;
+    const {name, description, thumbnail, noThumbnail, homepage, wiki} = char;
 
     return (
         <div className="random__item random__item_char">
             <div className="random__img">
-                <img src={thumbnail} alt="random character"/>
+                <img style={noThumbnail ? {objectFit: 'contain'} : null} src={thumbnail} alt="random character"/>
             </div>
             <div className="random__info">
                 <div>
@@ -95,10 +101,10 @@ const Char = ({char}) => {
                     </p>
                 </div>
                 <div className="random__buttons">
-                    <a href={homepage} target="_blank" className="random__button button">
+                    <a href={homepage} target="_blank" rel="noreferrer" className="random__button button">
                         Homepage
                     </a>
-                    <a href={wiki} target="_blank" className="random__button button button_grey">
+                    <a href={wiki} target="_blank" rel="noreferrer" className="random__button button button_grey">
                         Wiki
                     </a>
                 </div>
