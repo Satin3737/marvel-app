@@ -3,7 +3,7 @@ import '../styles/parts/skeleton.scss'
 
 const Skeleton = () => {
     return (
-        <section className="skeleton">
+        <div className="skeleton">
             <div className="skeleton__title">
                 Please select a character to see information
             </div>
@@ -16,7 +16,7 @@ const Skeleton = () => {
                 <div className="skeleton__item"></div>
                 <div className="skeleton__item"></div>
             </div>
-        </section>
+        </div>
     )
 }
 

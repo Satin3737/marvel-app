@@ -1,11 +1,6 @@
 @import '../variables';
 
 .skeleton {
-    width: 100%;
-    box-shadow: 0 5px 20px $c-shadow;
-    padding: 25px;
-    margin-bottom: 30px;
-    background: $c-white;
     &__title {
         font-size: 18px;
         font-weight: 700;

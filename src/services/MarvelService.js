@@ -30,7 +30,8 @@ class MarvelService {
             thumbnail: char.thumbnail.path + '.' + char.thumbnail.extension,
             noThumbnail: /image_not_available/.test(char.thumbnail.path),
             homepage: char.urls[0].url,
-            wiki: char.urls[1].url
+            wiki: char.urls[1].url,
+            comics: char.comics.items.map(item => item.name)
         }
     }
 }

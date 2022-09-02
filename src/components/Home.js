@@ -4,36 +4,47 @@ import Header from "./Header";
 import Banner from "./Banner";
 import CharRandom from "./CharRandom";
 import CharList from "./CharList";
-import Skeleton from "./Skeleton";
 import CharInfo from "./CharInfo";
 import CharForm from "./CharForm";
 import CharSingle from "./CharSingle";
 import ComicsSingle from "./ComicsSingle";
 import ComicsList from "./ComicsList";
+import {Component} from "react";
 
-const Home = () => {
-    return (
-        <main className="home">
-            <Header/>
-            <Banner/>
-            <CharRandom/>
-            <div className="container">
-                <div className="home__wrapper">
-                    <div className="home__content">
-                        <CharList/>
+class Home extends Component {
+    state = {
+        selectedChar: null
+    }
+
+    onCharSelected = (id) => {
+        this.setState({
+            selectedChar: id
+        });
+    }
+
+    render() {
+        return (
+            <main className="home">
+                <Header/>
+                <Banner/>
+                <CharRandom/>
+                <div className="container">
+                    <div className="home__wrapper">
+                        <div className="home__content">
+                            <CharList onCharSelected={this.onCharSelected}/>
+                        </div>
+                        <aside className="home__sidebar">
+                            <CharInfo charId={this.state.selectedChar}/>
+                            <CharForm/>
+                        </aside>
                     </div>
-                    <aside className="home__sidebar">
-                        <Skeleton/>
-                        <CharInfo/>
-                        <CharForm/>
-                    </aside>
                 </div>
-            </div>
-            <ComicsList/>
-            <CharSingle/>
-            <ComicsSingle/>
-        </main>
-    )
+                <ComicsList/>
+                <CharSingle/>
+                <ComicsSingle/>
+            </main>
+        )
+    }
 }
 
 export default Home;
