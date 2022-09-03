@@ -38,6 +38,7 @@ body {
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    transition: all 0.4s;
     &:before, &:after {
         content: '';
         width: 16px;
@@ -61,7 +62,7 @@ body {
     &_wide {
         min-width: 170px;
     }
-    &:hover, &:focus {
+    &:hover {
         &:before {
             left: -16px;
             top: -16px;
@@ -70,6 +71,9 @@ body {
             right: -16px;
             bottom: -16px;
         }
+    }
+    &:disabled {
+        background: $c-grey;
     }
 }
 
