@@ -6,6 +6,7 @@ import ErrorMessage from "./ErrorMessage";
 import Spinner from "./Spinner";
 import Skeleton from "./Skeleton";
 import nextId from "react-id-generator";
+import PropTypes from 'prop-types';
 
 class CharInfo extends Component {
     state = {
@@ -116,6 +117,10 @@ const Char = ({char}) => {
             })}
         </ul>
     </>
+}
+
+CharInfo.propTypes = {
+    charId: PropTypes.number
 }
 
 export default CharInfo;

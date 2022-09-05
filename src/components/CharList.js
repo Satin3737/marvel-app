@@ -5,6 +5,8 @@ import {Component} from "react";
 import ErrorMessage from "./ErrorMessage";
 import Spinner from "./Spinner";
 import nextId from "react-id-generator";
+import PropTypes from "prop-types";
+import CharInfo from "./CharInfo";
 
 class CharList extends Component {
     state = {
@@ -100,6 +102,10 @@ class CharList extends Component {
             </section>
         )
     }
+}
+
+CharList.propTypes = {
+    onCharSelected: PropTypes.func.isRequired
 }
 
 export default CharList;
