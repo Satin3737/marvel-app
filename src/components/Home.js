@@ -5,10 +5,6 @@ import Banner from "./Banner";
 import CharRandom from "./CharRandom";
 import CharList from "./CharList";
 import CharInfo from "./CharInfo";
-import CharForm from "./CharForm";
-import CharSingle from "./CharSingle";
-import ComicsSingle from "./ComicsSingle";
-import ComicsList from "./ComicsList";
 import {Component} from "react";
 
 class Home extends Component {
@@ -35,13 +31,9 @@ class Home extends Component {
                         </div>
                         <aside className="home__sidebar">
                             <CharInfo charId={this.state.selectedChar}/>
-                            <CharForm/>
                         </aside>
                     </div>
                 </div>
-                <ComicsList/>
-                <CharSingle/>
-                <ComicsSingle/>
             </main>
         )
     }
