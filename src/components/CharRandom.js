@@ -1,86 +1,74 @@
-import {Component} from "react";
+import {useEffect, useState} from "react";
 import '../styles/general.scss'
 import '../styles/parts/charRandom.scss'
 import MarvelService from "../services/MarvelService";
 import Spinner from "./Spinner";
 import ErrorMessage from "./ErrorMessage";
 
-class CharRandom extends Component {
-    state = {
-        char: {},
-        loading: true,
-        error: false
+const CharRandom = () => {
+    const [char, setChar] = useState({});
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(false);
+
+    const marvelService = new MarvelService();
+
+    const onCharLoaded = (char) => {
+        setChar(char);
+        setLoading(false);
     }
 
-    marvelService = new MarvelService();
-
-    onCharLoaded = (char) => {
-        this.setState({
-            char: char,
-            loading: false
-        });
+    const onError = () => {
+        setLoading(false);
+        setError(true);
     }
 
-    onError = () => {
-        this.setState({
-            loading: false,
-            error: true
-        });
-    }
-
-    updateChar = () => {
+    const updateChar = () => {
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
-        this.marvelService.getSingleCharacter(id)
-            .then(this.onCharLoaded)
-            .catch(this.onError);
+        marvelService.getSingleCharacter(id)
+            .then(onCharLoaded)
+            .catch(onError);
     }
 
-    tryRandomChar = () => {
-        this.setState({
-            loading: true
-        });
-        this.updateChar();
+    const tryRandomChar = () => {
+        setLoading(true);
+        updateChar();
     }
 
-    componentDidMount() {
-        this.updateChar();
-    }
+    useEffect(() => {
+        updateChar();
+    }, []);
 
-    render() {
-        const {char, loading, error} = this.state;
+    const errorMessage = error ? <ErrorMessage/> : null;
+    const spinner = loading ? <Spinner/> : null;
+    const content = !(loading || error) ? <Char char={char}/> : null;
 
-        const errorMessage = error ? <ErrorMessage/> : null;
-        const spinner = loading ? <Spinner/> : null;
-        const content = !(loading || error) ? <Char char={char}/> : null;
-
-        return (
-            <section className="random">
-                <div className="container">
-                    <div className="random__wrapper">
-                        {content || spinner || errorMessage}
-                        <div className="random__item random__item_try">
-                            <h2 className="random__title">
+    return (
+        <section className="random">
+            <div className="container">
+                <div className="random__wrapper">
+                    {content || spinner || errorMessage}
+                    <div className="random__item random__item_try">
+                        <h2 className="random__title">
+                        <span>
+                            Random character for today!
+                        </span>
                             <span>
-                                Random character for today!
-                            </span>
-                                <span>
-                                Do you want to get to know him better?
-                            </span>
-                            </h2>
-                            <div className="random__footer">
-                                <div className="random__another">
-                                    Or choose another one
-                                </div>
-                                <button onClick={this.tryRandomChar} className="random__button random__button_try button">
-                                    Try it
-                                </button>
+                            Do you want to get to know him better?
+                        </span>
+                        </h2>
+                        <div className="random__footer">
+                            <div className="random__another">
+                                Or choose another one
                             </div>
+                            <button onClick={tryRandomChar} className="random__button random__button_try button">
+                                Try it
+                            </button>
                         </div>
                     </div>
                 </div>
-            </section>
-        )
-    }
+            </div>
+        </section>
+    )
 }
 
 const Char = ({char}) => {
