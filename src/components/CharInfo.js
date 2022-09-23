@@ -1,32 +1,19 @@
+import useMarvelService from "../services/MarvelService";
 import {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
 import '../styles/general.scss'
 import '../styles/parts/charInfo.scss'
-import MarvelService from "../services/MarvelService";
 import ErrorMessage from "./ErrorMessage";
 import Spinner from "./Spinner";
 import Skeleton from "./Skeleton";
 import nextId from "react-id-generator";
 
 const CharInfo = (props) => {
+    const {loading, error, getSingleCharacter, clearError} = useMarvelService();
     const [char, setChar] = useState(null);
-    const [loading, setLoading] = useState(false);
-    const [error, setError] = useState(false);
-
-    const marvelService = new MarvelService();
 
     const onCharLoaded = (char) => {
         setChar(char);
-        setLoading(false);
-    }
-
-    const onCharLoading = () => {
-        setLoading(true);
-    }
-
-    const onError = () => {
-        setLoading(false);
-        setError(true);
     }
 
     const updateChar = () => {
@@ -34,10 +21,9 @@ const CharInfo = (props) => {
         if (!charId) {
             return;
         }
-        onCharLoading();
-        marvelService.getSingleCharacter(charId)
-            .then(onCharLoaded)
-            .catch(onError);
+        clearError();
+        getSingleCharacter(charId)
+            .then(onCharLoaded);
     }
 
     useEffect(() => {
@@ -51,7 +37,7 @@ const CharInfo = (props) => {
 
     return (
         <section className="info">
-            {skeleton || content || errorMessage || spinner}
+            {spinner || errorMessage || skeleton || content}
         </section>
     )
 }
