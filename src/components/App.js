@@ -6,6 +6,9 @@ import Banner from "./Banner";
 import CharRandom from "./CharRandom";
 import CharList from "./CharList";
 import CharInfo from "./CharInfo";
+import ComicsList from "./ComicsList";
+import ComicsSingle from "./ComicsSingle";
+import CharSingle from "./CharSingle";
 
 const App = () => {
     const [selectedChar, setSelectedChar] = useState(null);
@@ -28,6 +31,9 @@ const App = () => {
                         <CharInfo charId={selectedChar}/>
                     </aside>
                 </div>
+                <ComicsList/>
+                <ComicsSingle/>
+                {/*<CharSingle/>*/}
             </div>
         </main>
     )
