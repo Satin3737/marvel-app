@@ -1,5 +1,6 @@
 import '../styles/general.scss'
 import '../styles/parts/header.scss'
+import {NavLink} from "react-router-dom";
 
 const Header = () => {
     return (
@@ -10,15 +11,15 @@ const Header = () => {
                         <span>Marvel</span> information portal
                     </h1>
                     <nav className="header__nav">
-                        <a href="#" className="header__link header__link_current">
+                        <NavLink exact activeClassName="header__link_current" to="/" className="header__link">
                             Characters
-                        </a>
+                        </NavLink>
                         <span>
                             /
                         </span>
-                        <a href="#" className="header__link">
+                        <NavLink exact activeClassName="header__link_current" to="/comics" className="header__link">
                             Comics
-                        </a>
+                        </NavLink>
                     </nav>
                 </div>
             </div>
