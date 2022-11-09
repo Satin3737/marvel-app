@@ -3,6 +3,8 @@ import '../styles/parts/header.scss'
 import {NavLink} from "react-router-dom";
 
 const Header = () => {
+    const currentPageColor = ({isActive}) => ({color: isActive ? '#9F0013' : 'inherit'});
+
     return (
         <header className="header">
             <div className="container">
@@ -11,13 +13,23 @@ const Header = () => {
                         <span>Marvel</span> information portal
                     </h1>
                     <nav className="header__nav">
-                        <NavLink exact activeClassName="header__link_current" to="/" className="header__link">
+                        <NavLink
+                            end
+                            to="/"
+                            style={currentPageColor}
+                            className="header__link"
+                        >
                             Characters
                         </NavLink>
                         <span>
                             /
                         </span>
-                        <NavLink exact activeClassName="header__link_current" to="/comics" className="header__link">
+                        <NavLink
+                            end
+                            to="comics"
+                            style={currentPageColor}
+                            className="header__link"
+                        >
                             Comics
                         </NavLink>
                     </nav>
