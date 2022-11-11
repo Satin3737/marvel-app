@@ -1,5 +1,6 @@
 import '../styles/general.scss'
 import '../styles/parts/comicsList.scss'
+import {Link} from "react-router-dom";
 import useMarvelService from "../services/MarvelService";
 import {useEffect, useState} from "react";
 import nextId from "react-id-generator";
@@ -36,12 +37,11 @@ const ComicsList = () => {
 
     const renderItems = (arr) => {
         return arr.map(obj => {
-            console.log(obj.price);
             return (
                 <li
                     key={nextId()}
                     className="comicses__item">
-                    <a href="#" className="comicses__link">
+                    <Link to={`/comics/${obj.id}`} className="comicses__link">
                         <div className="comicses__img">
                             <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
                                  src={obj.thumbnail}
@@ -53,7 +53,7 @@ const ComicsList = () => {
                         <div className="comicses__price">
                             {obj.price}
                         </div>
-                    </a>
+                    </Link>
                 </li>
             )
         });

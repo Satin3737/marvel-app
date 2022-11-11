@@ -1,6 +1,6 @@
 import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import Header from "./Header";
-import {ComicsPage, HomePage} from "./pages";
+import {ComicsPage, HomePage, Page404, SingleComicsPage} from "./pages";
 import '../styles/general.scss'
 import '../styles/parts/home.scss'
 
@@ -12,9 +12,9 @@ const App = () => {
                 <Routes>
                     <Route path="/" element={<HomePage/>} />
                     <Route path="comics" element={<ComicsPage/>} />
+                    <Route path="comics/:comicsId" element={<SingleComicsPage/>} />
+                    <Route path="*" element={<Page404/>} />
                 </Routes>
-                {/*<ComicsSingle/>*/}
-                {/*<CharSingle/>*/}
             </main>
         </Router>
     )
