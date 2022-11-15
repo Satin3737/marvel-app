@@ -13,7 +13,7 @@ const SingleComicsPage = lazy(() => import('../components/pages/SingleComicsPage
 const App = () => {
     return (
         <Router>
-            <Suspense fallback={<Spinner/>}>
+            <Suspense fallback={<div className="overlay"><Spinner/></div>}>
                 <main className="home">
                     <Header/>
                     <Routes>
