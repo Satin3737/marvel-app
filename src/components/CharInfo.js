@@ -7,6 +7,7 @@ import ErrorMessage from "./ErrorMessage";
 import Spinner from "./Spinner";
 import Skeleton from "./Skeleton";
 import nextId from "react-id-generator";
+import {Link} from "react-router-dom";
 
 const CharInfo = (props) => {
     const {loading, error, getSingleCharacter, clearError} = useMarvelService();
@@ -43,7 +44,10 @@ const CharInfo = (props) => {
 }
 
 const Char = ({char}) => {
-    const {name, description, thumbnail, noThumbnail, homepage, wiki, comics} = char;
+    const {name, description, thumbnail, noThumbnail, homepage, wiki, comicsName, comicsId} = char;
+
+    let idArray = [];
+    comicsId.forEach(item => idArray.push(item.substring(item.lastIndexOf('/') + 1)));
 
     return <>
         <div className="info__header">
@@ -71,14 +75,14 @@ const Char = ({char}) => {
             Comics:
         </h4>
         <ul className="info__list">
-            {comics.length > 0 ? null : 'Marvel forgot to add this guy to at least one of comics('}
-            {comics.map((comics, i) => {
+            {comicsName.length > 0 ? null : 'Marvel forgot to add this guy to at least one of comics('}
+            {comicsName.map((comics, i) => {
                 if (i < 10) {
                     return (
                         <li key={nextId()} className="info__item">
-                            <a href="#" className="info__link">
+                            <Link to={`/comics/${idArray[i]}`} className="info__link">
                                 {comics}
-                            </a>
+                            </Link>
                         </li>
                     )
                 }

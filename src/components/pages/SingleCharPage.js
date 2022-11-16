@@ -1,13 +1,12 @@
-import '../styles/general.scss'
-import '../styles/parts/charSingle.scss'
-import loki from '../resources/images/char_loki.jpg'
+import '../../styles/general.scss'
+import '../../styles/parts/charSingle.scss'
 
-const CharSingle = () => {
+const SingleCharPage = () => {
     return (
         <section className="character">
             <div className="character__wrapper">
                 <div className="character__img">
-                    <img src={loki} alt="loki"/>
+                    {/*<img src={loki} alt="loki"/>*/}
                 </div>
                 <div className="character__info">
                     <h2 className="character__name title">
@@ -22,4 +21,4 @@ const CharSingle = () => {
     )
 }
 
-export default CharSingle;
+export default SingleCharPage;

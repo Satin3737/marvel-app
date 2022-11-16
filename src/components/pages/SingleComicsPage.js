@@ -60,9 +60,6 @@ const Comics = ({comics}) => {
                 <div className="comics__pages">
                     {pageCount}
                 </div>
-                <div className="comics__lang">
-                    Language: en-us
-                </div>
                 <div className="comics__price">
                     {price}
                 </div>

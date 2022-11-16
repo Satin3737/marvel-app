@@ -35,7 +35,8 @@ const useMarvelService = () => {
             noThumbnail: /image_not_available/.test(char.thumbnail.path),
             homepage: char.urls[0].url,
             wiki: char.urls[1].url,
-            comics: char.comics.items.map(item => item.name)
+            comicsName: char.comics.items.map(item => item.name),
+            comicsId: char.comics.items.map(item => item.resourceURI)
         }
     }
 
@@ -43,8 +44,8 @@ const useMarvelService = () => {
         return {
             id: comics.id,
             title: comics.title,
-            description: comics.description ? `${comics.description.slice(0, 190)}...` : 'There is no description for this character',
-            pageCount: comics.pageCount,
+            description: comics.description ? `${comics.description.slice(0, 190)}...` : 'There is no description for this comics',
+            pageCount: comics.pageCount + ' pages',
             price: comics.prices[0].price ? comics.prices[0].price + '$' : 'NOT AVAILABLE',
             thumbnail: comics.thumbnail.path + '.' + comics.thumbnail.extension,
             noThumbnail: /image_not_available/.test(comics.thumbnail.path),
