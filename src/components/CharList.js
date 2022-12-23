@@ -6,6 +6,7 @@ import '../styles/parts/charList.scss'
 import ErrorMessage from "./ErrorMessage";
 import Spinner from "./Spinner";
 import nextId from "react-id-generator";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 const CharList = (props) => {
     const {loading, error, getAllCharacters} = useMarvelService();
@@ -38,20 +39,22 @@ const CharList = (props) => {
     const renderItems = (arr) => {
         return arr.map(obj => {
             return (
-                <li
-                    key={nextId()}
-                    className="characters__item">
-                    <button onClick={() => props.onCharSelected(obj.id)} className="characters__link">
-                        <div className="characters__img">
-                            <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
-                                 src={obj.thumbnail}
-                                 alt={obj.name}/>
-                        </div>
-                        <div className="characters__name title">
-                            {obj.name}
-                        </div>
-                    </button>
-                </li>
+                <CSSTransition classNames="characters__transition">
+                    <li
+                        key={nextId()}
+                        className="characters__item">
+                        <button onClick={() => props.onCharSelected(obj.id)} className="characters__link">
+                            <div className="characters__img">
+                                <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
+                                     src={obj.thumbnail}
+                                     alt={obj.name}/>
+                            </div>
+                            <div className="characters__name title">
+                                {obj.name}
+                            </div>
+                        </button>
+                    </li>
+                </CSSTransition>
             )
         });
     }
@@ -63,7 +66,9 @@ const CharList = (props) => {
     return (
         <section className="characters">
             <ul className="characters__list">
-                {spinner || errorMessage || items}
+                <TransitionGroup component={null} >
+                    {spinner || errorMessage || items}
+                </TransitionGroup>
             </ul>
             <button
                 disabled={newItemsLoading}

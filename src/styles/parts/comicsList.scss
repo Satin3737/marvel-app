@@ -10,6 +10,7 @@
     }
     &__item {
         flex: 0 1 225px;
+        transition: all 0.5s;
     }
     &__link {
         transition: all 0.4s;
@@ -46,5 +47,23 @@
     }
     &__more {
         margin: 0 auto;
+    }
+    &__transition {
+        &-enter {
+            opacity: 0;
+            transform: translateY(-30%);
+        }
+        &-enter-active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        &-exit {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        &-exit-active {
+            opacity: 0;
+            transform: translateY(-30%);
+        }
     }
 }

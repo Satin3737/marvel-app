@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import nextId from "react-id-generator";
 import ErrorMessage from "./ErrorMessage";
 import Spinner from "./Spinner";
+import {CSSTransition, TransitionGroup} from "react-transition-group";
 
 const ComicsList = () => {
     const {loading, error, getAllComics} = useMarvelService();
@@ -38,23 +39,25 @@ const ComicsList = () => {
     const renderItems = (arr) => {
         return arr.map(obj => {
             return (
-                <li
-                    key={nextId()}
-                    className="comicses__item">
-                    <Link to={`/comics/${obj.id}`} className="comicses__link">
-                        <div className="comicses__img">
-                            <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
-                                 src={obj.thumbnail}
-                                 alt={obj.name}/>
-                        </div>
-                        <h3 className="comicses__name title">
-                            {obj.title}
-                        </h3>
-                        <div className="comicses__price">
-                            {obj.price}
-                        </div>
-                    </Link>
-                </li>
+                <CSSTransition classNames="comicses__transition">
+                    <li
+                        key={nextId()}
+                        className="comicses__item">
+                        <Link to={`/comics/${obj.id}`} className="comicses__link">
+                            <div className="comicses__img">
+                                <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
+                                     src={obj.thumbnail}
+                                     alt={obj.name}/>
+                            </div>
+                            <h3 className="comicses__name title">
+                                {obj.title}
+                            </h3>
+                            <div className="comicses__price">
+                                {obj.price}
+                            </div>
+                        </Link>
+                    </li>
+                </CSSTransition>
             )
         });
     }
@@ -66,7 +69,9 @@ const ComicsList = () => {
     return (
         <section className="comicses">
             <ul className="comicses__list">
-                {spinner || errorMessage || items}
+                <TransitionGroup component={null}>
+                    {spinner || errorMessage || items}
+                </TransitionGroup>
             </ul>
             <button
                 disabled={newItemsLoading}
