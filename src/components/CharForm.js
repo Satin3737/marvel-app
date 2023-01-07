@@ -29,7 +29,7 @@ const CharForm = () => {
                     <div className="form__message">
                         There is! Visit {result.name} page?
                     </div>
-                    <Link to={`/character/${result.id}`} className="form__submit button button_grey">
+                    <Link to={`/characters/${result.id}`} className="form__submit button button_grey">
                         To page
                     </Link>
                 </div>

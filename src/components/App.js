@@ -8,8 +8,9 @@ import '../styles/parts/home.scss';
 const Page404 = lazy(() => import('../components/pages/404Page'));
 const HomePage = lazy(() => import('../components/pages/HomePage'));
 const ComicsPage = lazy(() => import('../components/pages/ComicsPage'));
-const SingleComicsPage = lazy(() => import('../components/pages/SingleComicsPage'));
-const SingleCharPage = lazy(() => import('../components/pages/SingleCharPage'));
+const SinglePage = lazy(() => import('../components/pages/SinglePage'));
+const CharLayout = lazy(() => import('../components/pages/single/CharLayout'));
+const ComicsLayout = lazy(() => import('../components/pages/single/ComicsLayout'));
 
 const App = () => {
     return (
@@ -19,10 +20,9 @@ const App = () => {
                     <Header/>
                     <Routes>
                         <Route path="/" element={<HomePage/>} />
-                        <Route path="/:charId" element={<SingleCharPage/>} />
-                        <Route path="character/:charId" element={<SingleCharPage/>} />
+                        <Route path="characters/:dataId" element={<SinglePage Component={CharLayout} dataType="char"/>} />
                         <Route path="comics" element={<ComicsPage/>} />
-                        <Route path="comics/:comicsId" element={<SingleComicsPage/>} />
+                        <Route path="comics/:dataId" element={<SinglePage Component={ComicsLayout} dataType="comics"/>} />
                         <Route path="*" element={<Page404/>} />
                     </Routes>
                 </main>
