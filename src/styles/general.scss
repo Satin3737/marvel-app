@@ -33,7 +33,7 @@ body {
 .button {
     width: fit-content;
     min-width: 100px;
-    padding: 11px 18px;
+    padding: 12px 18px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -46,6 +46,7 @@ body {
     overflow: hidden;
     cursor: pointer;
     transition: all 0.4s;
+    line-height: 1;
     &:before, &:after {
         content: '';
         width: 16px;

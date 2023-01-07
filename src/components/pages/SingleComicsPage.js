@@ -11,14 +11,10 @@ const SingleComicsPage = () => {
     const [comics, setComics] = useState(null);
     const {loading, error, clearError, getSingleComics} = useMarvelService();
 
-    const onComicsLoaded = (comics) => {
-        setComics(comics);
-    }
-
     const updateComics = () => {
         clearError();
         getSingleComics(comicsId)
-            .then(onComicsLoaded);
+            .then(setComics);
     }
 
     useEffect(() => {

@@ -39,7 +39,7 @@ const CharList = (props) => {
     const renderItems = (arr) => {
         return arr.map(obj => {
             return (
-                <CSSTransition classNames="characters__transition">
+                <CSSTransition timeout={500} classNames="characters__transition">
                     <li
                         key={nextId()}
                         className="characters__item">

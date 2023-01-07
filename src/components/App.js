@@ -20,6 +20,7 @@ const App = () => {
                     <Routes>
                         <Route path="/" element={<HomePage/>} />
                         <Route path="/:charId" element={<SingleCharPage/>} />
+                        <Route path="character/:charId" element={<SingleCharPage/>} />
                         <Route path="comics" element={<ComicsPage/>} />
                         <Route path="comics/:comicsId" element={<SingleComicsPage/>} />
                         <Route path="*" element={<Page404/>} />

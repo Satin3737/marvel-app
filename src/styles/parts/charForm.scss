@@ -6,6 +6,17 @@
     padding: 25px;
     margin-bottom: 30px;
     background: $c-white;
+    position: relative;
+    &.loading:after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: $c-overlay;
+        z-index: 1;
+    }
     &__title {
         font-size: 18px;
         font-weight: 700;
@@ -15,6 +26,10 @@
         display: flex;
         justify-content: space-between;
         align-items: center;
+        &:last-child {
+            margin-top: 16px;
+            min-height: 50px;
+        }
     }
     &__input {
         flex: 1 1 auto;
@@ -30,5 +45,26 @@
         &::placeholder {
             opacity: 0.5;
         }
+    }
+    &__submit {
+        flex: 0 0 100px;
+    }
+    svg {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        z-index: 2;
+    }
+    &__message {
+        color: $c-green;
+        font-weight: 700;
+        font-size: 18px;
+    }
+    &__error {
+        font-size: 18px;
+        color: $c-red;
+        font-weight: 700;
+        line-height: 25px;
     }
 }

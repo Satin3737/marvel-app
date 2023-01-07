@@ -39,7 +39,7 @@ const ComicsList = () => {
     const renderItems = (arr) => {
         return arr.map(obj => {
             return (
-                <CSSTransition classNames="comicses__transition">
+                <CSSTransition timeout={500} classNames="comicses__transition">
                     <li
                         key={nextId()}
                         className="comicses__item">
