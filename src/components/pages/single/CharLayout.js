@@ -2,6 +2,7 @@ import '../../../styles/general.scss'
 import '../../../styles/parts/charSingle.scss'
 import {Link} from "react-router-dom";
 import nextId from "react-id-generator";
+import {Helmet} from "react-helmet";
 
 const Character = ({data}) => {
     const {name, description, thumbnail, noThumbnail, wiki, homepage, comicsName, comicsId} = data;
@@ -11,6 +12,15 @@ const Character = ({data}) => {
 
     return (
         <section className="character">
+            <Helmet>
+                <meta
+                    name={name}
+                    content="Marvel DB"
+                />
+                <title>
+                    Marvel information portal | {name} character
+                </title>
+            </Helmet>
             <div className="character__wrapper">
                 <div className="character__img">
                     <img style={noThumbnail ? {objectFit: 'contain'} : null} src={thumbnail} alt={name}/>

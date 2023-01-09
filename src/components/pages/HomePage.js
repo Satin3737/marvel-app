@@ -3,6 +3,7 @@ import CharList from "../CharList";
 import CharInfo from "../CharInfo";
 import {useState} from "react";
 import CharForm from "../CharForm";
+import {Helmet} from "react-helmet";
 
 const HomePage = () => {
     const [selectedChar, setSelectedChar] = useState(null);
@@ -13,6 +14,15 @@ const HomePage = () => {
 
     return (
         <>
+            <Helmet>
+                <meta 
+                    name="Marvel information portal"
+                    content="Marvel DB"
+                />
+                <title>
+                    Marvel information portal
+                </title>
+            </Helmet>
             <CharRandom/>
             <div className="container">
                 <div className="home__wrapper">
