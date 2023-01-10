@@ -11,7 +11,7 @@ const Page404 = () => {
                     content="Marvel DB"
                 />
                 <title>
-                    Marvel information portal | 404
+                    {'Marvel information portal | 404'}
                 </title>
             </Helmet>
             <ErrorMessage/>

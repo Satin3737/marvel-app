@@ -20,7 +20,7 @@ const HomePage = () => {
                     content="Marvel DB"
                 />
                 <title>
-                    Marvel information portal
+                    {'Marvel information portal'}
                 </title>
             </Helmet>
             <CharRandom/>

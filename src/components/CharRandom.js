@@ -2,11 +2,10 @@ import useMarvelService from "../services/MarvelService";
 import {useEffect, useState} from "react";
 import '../styles/general.scss'
 import '../styles/parts/charRandom.scss'
-import Spinner from "./Spinner";
-import ErrorMessage from "./ErrorMessage";
+import setContent from "../utils/setContent";
 
 const CharRandom = () => {
-    const {loading, error, getSingleCharacter, clearError} = useMarvelService();
+    const {getSingleCharacter, clearError, process, setProcess} = useMarvelService();
     const [char, setChar] = useState({});
 
     const onCharLoaded = (char) => {
@@ -17,7 +16,8 @@ const CharRandom = () => {
         clearError();
         const id = Math.floor(Math.random() * (1011400 - 1011000) + 1011000);
         getSingleCharacter(id)
-            .then(onCharLoaded);
+            .then(onCharLoaded)
+            .then(() => setProcess('confirmed'));
     }
 
     const tryRandomChar = () => {
@@ -28,15 +28,11 @@ const CharRandom = () => {
         updateChar();
     }, []);
 
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading ? <Spinner/> : null;
-    const content = !(loading || error) ? <Char char={char}/> : null;
-
     return (
         <section className="random">
             <div className="container">
                 <div className="random__wrapper">
-                    {spinner || errorMessage || content}
+                    {setContent(process, Char, char)}
                     <div className="random__item random__item_try">
                         <h2 className="random__title">
                         <span>
@@ -61,8 +57,8 @@ const CharRandom = () => {
     )
 }
 
-const Char = ({char}) => {
-    const {name, description, thumbnail, noThumbnail, homepage, wiki} = char;
+const Char = ({data}) => {
+    const {name, description, thumbnail, noThumbnail, homepage, wiki} = data;
 
     return (
         <div className="random__item random__item_char">

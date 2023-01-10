@@ -7,20 +7,24 @@
     margin-bottom: 30px;
     background: $c-white;
     position: relative;
-    &.loading:after {
-        content: '';
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: $c-overlay;
-        z-index: 1;
+    &.loading {
+        min-height: 190px;
+        &:after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: $c-overlay;
+            z-index: 1;
+        }
     }
     &__title {
         font-size: 18px;
         font-weight: 700;
         margin-bottom: 15px;
+        line-height: 21px;
     }
     &__wrapper {
         display: flex;
@@ -34,6 +38,7 @@
     &__input {
         flex: 1 1 auto;
         padding: 10px;
+        line-height: 18px;
         background: $c-white;
         box-shadow: 0 4px 4px $c-shadow;
         border: none;
