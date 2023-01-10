@@ -3,13 +3,12 @@ import {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import '../styles/general.scss'
 import '../styles/parts/charList.scss'
-import ErrorMessage from "./ErrorMessage";
-import Spinner from "./Spinner";
 import nextId from "react-id-generator";
 import {CSSTransition, TransitionGroup} from "react-transition-group";
+import setContentList from "../utils/setContentList";
 
 const CharList = (props) => {
-    const {loading, error, getAllCharacters} = useMarvelService();
+    const {getAllCharacters, process, setProcess} = useMarvelService();
     const [char, setChar] = useState([]);
     const [newItemsLoading, setNewItemsLoading] = useState(false);
     const [offset, setOffset] = useState(260);
@@ -29,7 +28,8 @@ const CharList = (props) => {
     const getCharacters = (offset, initial) => {
         initial ? setNewItemsLoading(false) : setNewItemsLoading(true);
         getAllCharacters(offset)
-            .then(onCharLoaded);
+            .then(onCharLoaded)
+            .then(() => setProcess('confirmed'));
     }
 
     useEffect(() => {
@@ -59,15 +59,11 @@ const CharList = (props) => {
         });
     }
 
-    const items = renderItems(char);
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading && !newItemsLoading ? <Spinner/> : null;
-
     return (
         <section className="characters">
             <ul className="characters__list">
                 <TransitionGroup component={null} >
-                    {spinner || errorMessage || items}
+                    {setContentList(process, () => renderItems(char), newItemsLoading)}
                 </TransitionGroup>
             </ul>
             <button

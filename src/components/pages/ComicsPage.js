@@ -11,7 +11,7 @@ const ComicsPage = () => {
                     content="Marvel DB"
                 />
                 <title>
-                    Marvel information portal | Comics page
+                    {'Marvel information portal | Comics page'}
                 </title>
             </Helmet>
             <Banner/>

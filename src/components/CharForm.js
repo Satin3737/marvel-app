@@ -2,13 +2,12 @@ import '../styles/general.scss'
 import '../styles/parts/charForm.scss'
 import {useForm} from "react-hook-form";
 import useMarvelService from "../services/MarvelService";
-import Spinner from "./Spinner";
 import {Link} from "react-router-dom";
 import {useState} from "react";
-import ErrorMessage from "./ErrorMessage";
+import setContent from "../utils/setContent";
 
 const CharForm = () => {
-    const {loading, error, getSingleCharacterByName} = useMarvelService();
+    const {getSingleCharacterByName, process, setProcess} = useMarvelService();
     const [findedChar, setFindedChar] = useState(null);
     const {register, handleSubmit} = useForm({
         defaultValues: {
@@ -19,7 +18,8 @@ const CharForm = () => {
 
     const onSubmit = data => {
         getSingleCharacterByName(data.charName)
-            .then(setFindedChar);
+            .then(setFindedChar)
+            .then(() => setProcess('confirmed'));
     };
 
     const renderResult = (result) => {
@@ -45,13 +45,8 @@ const CharForm = () => {
         }
     }
 
-    const spinner = loading ? <Spinner/> : null;
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const result = findedChar ? renderResult(findedChar) : null;
-
     return (
-        <form onSubmit={handleSubmit(onSubmit)} className={`form${loading ? ' loading' : ''}`}>
-            {spinner}
+        <form onSubmit={handleSubmit(onSubmit)} className={`form${process === 'loading' ? ' loading' : ''}`}>
             <h4 className="form__title">
                 Or find a character by name:
             </h4>
@@ -62,11 +57,11 @@ const CharForm = () => {
                     className="form__input"
                     placeholder="Enter name"
                 />
-                <button className="form__submit button">
+                <button className="form__submit button" disabled={process === 'loading'}>
                     Find
                 </button>
             </div>
-            {errorMessage || result}
+            {setContent(process, () => renderResult(findedChar))}
         </form>
     )
 }

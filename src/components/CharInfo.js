@@ -1,16 +1,14 @@
+import '../styles/general.scss'
+import '../styles/parts/charInfo.scss'
 import useMarvelService from "../services/MarvelService";
 import {useEffect, useState} from "react";
 import PropTypes from 'prop-types';
-import '../styles/general.scss'
-import '../styles/parts/charInfo.scss'
-import ErrorMessage from "./ErrorMessage";
-import Spinner from "./Spinner";
-import Skeleton from "./Skeleton";
 import nextId from "react-id-generator";
 import {Link} from "react-router-dom";
+import setContent from "../utils/setContent";
 
 const CharInfo = (props) => {
-    const {loading, error, getSingleCharacter, clearError} = useMarvelService();
+    const {getSingleCharacter, clearError, process, setProcess} = useMarvelService();
     const [char, setChar] = useState(null);
 
     const onCharLoaded = (char) => {
@@ -24,27 +22,24 @@ const CharInfo = (props) => {
         }
         clearError();
         getSingleCharacter(charId)
-            .then(onCharLoaded);
+            .then(onCharLoaded)
+            .then(() => setProcess('confirmed'));
     }
 
     useEffect(() => {
+        setProcess('skeleton');
         updateChar();
     }, [props.charId]);
 
-    const skeleton = char || loading || error ? null : <Skeleton/>
-    const errorMessage = error ? <ErrorMessage/> : null;
-    const spinner = loading ? <Spinner/> : null;
-    const content = !(loading || error || !char) ? <Char char={char}/> : null;
-
     return (
         <section className="info">
-            {spinner || errorMessage || skeleton || content}
+            {setContent(process, Char, char)}
         </section>
     )
 }
 
-const Char = ({char}) => {
-    const {name, description, thumbnail, noThumbnail, homepage, wiki, comicsName, comicsId} = char;
+const Char = ({data}) => {
+    const {name, description, thumbnail, noThumbnail, homepage, wiki, comicsName, comicsId} = data;
 
     let idArray = [];
     comicsId.forEach(item => idArray.push(item.substring(item.lastIndexOf('/') + 1)));

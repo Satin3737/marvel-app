@@ -13,7 +13,7 @@ const Comics = ({data}) => {
                     content="Marvel DB"
                 />
                 <title>
-                    Marvel information portal | {title} comics book
+                    {`Marvel information portal | ${title} comics book`}
                 </title>
             </Helmet>
             <div className="comics__wrapper">
