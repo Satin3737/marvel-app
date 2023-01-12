@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import '../styles/general.scss'
 import '../styles/parts/comicsList.scss'
 import {Link} from "react-router-dom";
 import useMarvelService from "../services/MarvelService";
 import {useEffect, useState} from "react";
 import nextId from "react-id-generator";
-import {CSSTransition, TransitionGroup} from "react-transition-group";
 import setContentList from "../utils/setContentList";
 
 const ComicsList = () => {
@@ -39,25 +39,23 @@ const ComicsList = () => {
     const renderItems = (arr) => {
         return arr.map(obj => {
             return (
-                <CSSTransition timeout={500} classNames="comicses__transition">
-                    <li
-                        key={nextId()}
-                        className="comicses__item">
-                        <Link to={`/comics/${obj.id}`} className="comicses__link">
-                            <div className="comicses__img">
-                                <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
-                                     src={obj.thumbnail}
-                                     alt={obj.name}/>
-                            </div>
-                            <h3 className="comicses__name title">
-                                {obj.title}
-                            </h3>
-                            <div className="comicses__price">
-                                {obj.price}
-                            </div>
-                        </Link>
-                    </li>
-                </CSSTransition>
+                <li
+                    key={nextId()}
+                    className="comicses__item">
+                    <Link to={`/comics/${obj.id}`} className="comicses__link">
+                        <div className="comicses__img">
+                            <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
+                                    src={obj.thumbnail}
+                                    alt={obj.name}/>
+                        </div>
+                        <h3 className="comicses__name title">
+                            {obj.title}
+                        </h3>
+                        <div className="comicses__price">
+                            {obj.price}
+                        </div>
+                    </Link>
+                </li>
             )
         });
     }
@@ -65,9 +63,7 @@ const ComicsList = () => {
     return (
         <section className="comicses">
             <ul className="comicses__list">
-                <TransitionGroup component={null}>
-                    {setContentList(process, () => renderItems(comics), newItemsLoading)}
-                </TransitionGroup>
+                {setContentList(process, () => renderItems(comics), newItemsLoading)}
             </ul>
             <button
                 disabled={newItemsLoading}

@@ -13,6 +13,7 @@
         &_char {
             background: $c-white;
             display: flex;
+            gap: 25px;
         }
         &_try {
             background: url("../../resources/images/random_weapon.png") no-repeat right 30px bottom 14px / 130px, $c-bg;
@@ -22,8 +23,7 @@
         }
     }
     &__img {
-        margin-right: 25px;
-        flex: 1 1 180px;
+        flex: 0 1 180px;
         max-height: 200px;
         img {
             width: 100%;
@@ -32,7 +32,7 @@
         }
     }
     &__info {
-        flex: 1 1 265px;
+        flex: 0 1 265px;
         display: flex;
         justify-content: space-between;
         flex-direction: column;
@@ -42,13 +42,11 @@
     }
     &__descr {
         margin-bottom: 12px;
-        word-break: break-all;
     }
     &__buttons {
         display: flex;
-        a:first-child {
-            margin-right: 30px;
-        }
+        flex-wrap: wrap;
+        gap: 10px 30px;
     }
     &__title, &__another {
         font-size: 24px;
@@ -68,6 +66,47 @@
             &:before, &:after {
                 background: $c-bg;
             }
+        }
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .random {
+        margin-bottom: 30px;
+        &__wrapper {
+            min-height: 240px;
+        }
+        &__item {
+            padding: 20px;
+            &_char {
+                gap: 15px;
+            }
+        }
+        &__buttons {
+            gap: 10px;
+        }
+        &__title, &__another {
+            font-size: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .random {
+        &__wrapper {
+            flex-direction: column;
+        }
+        &__item {
+            &_char {
+                min-height: 200px;
+            }
+        }
+        &__img {
+            flex: 0 1 40%;
+            max-height: 160px;
+        }
+        &__info {
+            flex: 0 1 60%;
         }
     }
 }

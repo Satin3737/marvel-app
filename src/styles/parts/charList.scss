@@ -5,15 +5,14 @@
     &__list {
         display: flex;
         flex-wrap: wrap;
-        gap: 30px 25px;
+        justify-content: space-between;
+        gap: 30px 3%;
         margin-bottom: 45px;
     }
     &__item {
-        flex: 0 1 200px;
-        transition: all 0.5s;
+        flex: 0 1 30%;
     }
     &__link {
-        display: block;
         width: 100%;
         box-shadow: 0 5px 20px $c-shadow;
         transition: all 0.4s;
@@ -39,27 +38,33 @@
         color: $c-white;
         padding: 15px;
         background: $c-bg;
-        min-height: 100px;
+        line-height: 30px;
+        min-height: 90px;
     }
     &__more {
         margin: 0 auto;
     }
-    &__transition {
-        &-enter {
-            opacity: 0;
-            transform: translateY(-20%);
+}
+
+@media screen and (max-width: 991px) {
+    .characters {
+        &__list {
+            margin-bottom: 25px;
+            gap: 20px 4%;
         }
-        &-enter-active {
-            opacity: 1;
-            transform: translateY(0);
+        &__item {
+            flex: 0 1 48%;
         }
-        &-exit {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        &-exit-active {
-            opacity: 0;
-            transform: translateY(-20%);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .characters {
+        &__link {
+            &:hover, &:focus {
+                box-shadow: none;
+                transform: none;
+            }
         }
     }
 }

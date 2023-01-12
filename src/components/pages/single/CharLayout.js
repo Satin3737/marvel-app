@@ -50,6 +50,7 @@ const Character = ({data}) => {
                                     </li>
                                 )
                             }
+                            return null;
                         })}
                     </ul>
                     <p className="character__also">

@@ -17,3 +17,40 @@
         margin-left: 280px;
     }
 }
+
+@media screen and (max-width: 991px) {
+    .banner {
+        margin-bottom: 30px;
+        &__title {
+            font-size: 20px;
+        }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .banner {
+        &__wrapper {
+            background:
+            url("../../resources/images/banner_avengers.png") no-repeat left 5px center / contain,
+            url("../../resources/images/banner_logo.png") no-repeat right 5px center / contain,
+            $c-bg;
+        }
+        &__title {
+            margin-left: 160px;
+        }
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .banner {
+        &__wrapper {
+            background:
+            url("../../resources/images/banner_avengers.png") no-repeat right center / contain,
+            $c-bg;
+        }
+        &__title {
+            margin-left: 10px;
+            max-width: 200px;
+        }
+    }
+}

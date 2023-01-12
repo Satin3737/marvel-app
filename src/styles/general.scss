@@ -10,6 +10,14 @@ body {
     color: $c-text;
 }
 
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 50px 0;
+    background: url("../resources/images/home_bg.png") no-repeat right bottom / 470px;
+}
+
 .container {
     width: 100%;
     max-width: 1180px;
@@ -107,4 +115,25 @@ body {
     align-items: center;
     justify-content: center;
     padding: 20px;
+}
+
+@media screen and (max-width: 1200px) {
+    .page {
+        background: none;
+    }
+}
+
+@media screen and (max-width: 991px) {
+    .container {
+        padding: 0 20px;
+    }
+    .title {
+        font-size: 20px;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container {
+        padding: 0 10px;
+    }
 }

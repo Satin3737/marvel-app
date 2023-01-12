@@ -16,7 +16,7 @@ const App = () => {
     return (
         <Router>
             <Suspense fallback={<div className="overlay"><Spinner/></div>}>
-                <main className="home">
+                <main className="page">
                     <Header/>
                     <Routes>
                         <Route path="/" element={<HomePage/>} />

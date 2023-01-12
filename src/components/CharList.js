@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import useMarvelService from "../services/MarvelService";
 import {useEffect, useState} from "react";
 import PropTypes from "prop-types";
 import '../styles/general.scss'
 import '../styles/parts/charList.scss'
 import nextId from "react-id-generator";
-import {CSSTransition, TransitionGroup} from "react-transition-group";
 import setContentList from "../utils/setContentList";
 
 const CharList = (props) => {
@@ -39,22 +39,20 @@ const CharList = (props) => {
     const renderItems = (arr) => {
         return arr.map(obj => {
             return (
-                <CSSTransition timeout={500} classNames="characters__transition">
-                    <li
-                        key={nextId()}
-                        className="characters__item">
-                        <button onClick={() => props.onCharSelected(obj.id)} className="characters__link">
-                            <div className="characters__img">
-                                <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
-                                     src={obj.thumbnail}
-                                     alt={obj.name}/>
-                            </div>
-                            <div className="characters__name title">
-                                {obj.name}
-                            </div>
-                        </button>
-                    </li>
-                </CSSTransition>
+                <li
+                    key={nextId()}
+                    className="characters__item">
+                    <button onClick={() => props.onCharSelected(obj.id)} className="characters__link">
+                        <div className="characters__img">
+                            <img style={obj.noThumbnail ? {objectFit: 'contain'} : null}
+                                    src={obj.thumbnail}
+                                    alt={obj.name}/>
+                        </div>
+                        <div className="characters__name title">
+                            {obj.name}
+                        </div>
+                    </button>
+                </li>
             )
         });
     }
@@ -62,9 +60,7 @@ const CharList = (props) => {
     return (
         <section className="characters">
             <ul className="characters__list">
-                <TransitionGroup component={null} >
-                    {setContentList(process, () => renderItems(char), newItemsLoading)}
-                </TransitionGroup>
+                {setContentList(process, () => renderItems(char), newItemsLoading)}
             </ul>
             <button
                 disabled={newItemsLoading}
