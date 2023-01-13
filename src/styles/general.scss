@@ -124,6 +124,9 @@ body {
 }
 
 @media screen and (max-width: 991px) {
+    .page {
+        padding: 20px 0;
+    }
     .container {
         padding: 0 20px;
     }
